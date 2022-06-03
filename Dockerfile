@@ -10,7 +10,8 @@ RUN apt-get update && \
           texlive-full
 RUN apt-get install -y \
       inotify-tools \
-      xzdec
+      xzdec \
+      wget
 
 # Add external fonts
 # https://tex.stackexchange.com/questions/27659/how-to-use-downloaded-fonts-with-xetex-on-ubuntu
