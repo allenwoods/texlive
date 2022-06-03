@@ -1,0 +1,11 @@
+#!/bin/bash -eu
+
+useradd -m texuser
+ORIGPASSWD=$(cat /etc/passwd | grep texuser)
+ORIG_UID=$(echo $ORIGPASSWD | cut -f3 -d:)
+ORIG_GID=$(echo $ORIGPASSWD | cut -f4 -d:)
+
+sed -i -e "s/:$ORIG_UID:$ORIG_GID:/:1000:1000:/" /etc/passwd
+sed -i -e "s,/bin/sh,/bin/bash,g" /etc/passwd
+sed -i -e "s/texuser:x:$ORIG_GID:/texuser:x:1000:/" /etc/group
+
