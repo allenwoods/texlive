@@ -25,6 +25,7 @@ RUN fc-cache -f -v
 RUN tlmgr init-usertree
 
 COPY add_user add_user
+RUN chmod +x ./add_user
 RUN ./add_user
 USER texuser
 
